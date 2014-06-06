@@ -1,0 +1,146 @@
+
+<!-- saved from url=(0068)http://www.creatupropiaweb.com/recursos/calendarios/calendario_3.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>Calendarios Crea tu Propia Web</title>
+<script language="javascript">
+
+		var gdFecha = new Date();
+
+		function cargar_calendario(iDia, iMes, iAno){
+
+			if (isNaN(iDia)) iDia = gdFecha.getDate();
+			if (isNaN(iMes)) iMes = gdFecha.getMonth();
+			if (isNaN(iAno)) iAno = gdFecha.getFullYear();
+
+			var sCalendario;
+			var sEstilos;
+			var iCont;
+			var iIncremento;
+			var dPasoFecha = new Date(iAno,iMes,1);
+
+			gdFecha = new Date(iAno,iMes,iDia);
+
+			sCalendario = "<table border='0' cellspacing='0' cellpadding='0' bordercolor='#000000' style='background-color:#000000;cursor:default;'><tr>";
+			sCalendario = sCalendario + "<tr>" +
+			  	"<td class='celda_calendario'><b>D</b></td>" +
+				"<td class='celda_calendario'><b>L</b></td>" +
+			      "<td class='celda_calendario'><b>M</b></td>" +
+		        	"<td class='celda_calendario'><b>M</b></td>" +
+		        	"<td class='celda_calendario'><b>J</b></td>" +
+		        	"<td class='celda_calendario'><b>V</b></td>" +
+		        	"<td class='celda_calendario'><b>S</b></td>" +
+		        "</tr>";
+
+			for (iIncremento = 1 ; iIncremento < dPasoFecha.getDay() ; iIncremento++)
+				sCalendario = sCalendario + "<td class='celda_calendario'>&nbsp;</td>";
+
+			iIncremento--;
+
+			for (iCont = 1 ; dPasoFecha.getMonth() == gdFecha.getMonth() ; iCont++){
+
+				sEstilos = "";
+
+				if ((iCont + iIncremento) % 7 == 1)
+					sCalendario = sCalendario + "</tr><tr>";
+
+				if (dPasoFecha.getDate() == gdFecha.getDate())
+					sEstilos = sEstilos + "background-color:#ffff00;";
+
+				if ((iCont + iIncremento) % 7 == 0)
+					sEstilos = sEstilos + "color:#FFFFFF;";
+
+				if (sEstilos != "")
+					sEstilos = " style='" + sEstilos + "' ";
+
+				sCalendario = sCalendario + "<td class='celda_calendario'" + sEstilos + " onclick='pasar_fecha(" + iCont + ");'>" + iCont + "</td>";
+
+				dPasoFecha.setDate(dPasoFecha.getDate() + 1);
+			}
+
+			sCalendario = sCalendario + "</tr></table>";
+			document.getElementById("contenedor").innerHTML = sCalendario;
+
+		}
+
+		function pasar_fecha(iDia, iMes, iAno){
+
+			if (isNaN(iDia)) iDia = gdFecha.getDate();
+			if (isNaN(iMes)) iMes = gdFecha.getMonth();
+			if (isNaN(iAno)) iAno = gdFecha.getFullYear();
+
+			gdFecha = new Date(iAno, iMes, iDia);
+
+			document.formulario.dia.value = gdFecha.getDate();
+			document.formulario.mes.value = gdFecha.getMonth() + 1;
+			document.formulario.ano.value = gdFecha.getFullYear();
+
+			cargar_calendario();
+		}
+
+		function es_numero(texto){
+			var cadena = "1234567890";
+			var respuesta = new Boolean(true);
+
+			if (isNaN(texto)) return false;
+			if (texto.length == 0) return false;
+
+			for (var contador = 0 ; contador < texto.length ; contador++){
+				if (cadena.indexOf(texto.substr(contador, 1),0) == -1){
+					respuesta = false;
+				      break;
+				}
+			}
+
+			return respuesta;
+		}
+
+	</script>
+
+	<style>
+		td.celda_calendario{
+			text-align:center;
+			font-size:14px;
+			color:#ffffff;
+			padding:0px;
+			background-color:#000000;
+			font-weight:400;
+		}
+		input.texto{
+			border:0px #000000 ;
+		}
+	</style>
+
+	</head>
+<body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" onload="cargar_calendario();">
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="112" id="table1" height="169">
+	<tbody><tr>
+		<td height="87" bgcolor="#000000" width="112">
+		<p><a href="http://www.creatupropiaweb.com/" target="_blank">
+		<img border="0" src="pecera_pc.gif" alt="crear pagina web gratis" align="right" width="107" height="80"></a></p></td>
+	
+	</tr><tr>
+		<td align="center" bgcolor="#000000" height="82" width="112">
+
+
+
+		<table width="100%" height="80"><tbody><tr>
+          <td width="100%" height="80" align="center" valign="top">
+
+			<div name="contenedor" id="contenedor"><table border="0" cellspacing="0" cellpadding="0" bordercolor="#000000" style="background-color:#000000;cursor:default;"><tbody><tr></tr><tr><td class="celda_calendario"><b>D</b></td><td class="celda_calendario"><b>L</b></td><td class="celda_calendario"><b>M</b></td><td class="celda_calendario"><b>M</b></td><td class="celda_calendario"><b>J</b></td><td class="celda_calendario"><b>V</b></td><td class="celda_calendario"><b>S</b></td></tr><tr><td class="celda_calendario">&nbsp;</td><td class="celda_calendario" onclick="pasar_fecha(1);">1</td><td class="celda_calendario" onclick="pasar_fecha(2);">2</td><td class="celda_calendario" onclick="pasar_fecha(3);">3</td><td class="celda_calendario" onclick="pasar_fecha(4);">4</td><td class="celda_calendario" onclick="pasar_fecha(5);">5</td><td class="celda_calendario" style="color:#FFFFFF;" onclick="pasar_fecha(6);">6</td></tr><tr><td class="celda_calendario" onclick="pasar_fecha(7);">7</td><td class="celda_calendario" onclick="pasar_fecha(8);">8</td><td class="celda_calendario" onclick="pasar_fecha(9);">9</td><td class="celda_calendario" onclick="pasar_fecha(10);">10</td><td class="celda_calendario" onclick="pasar_fecha(11);">11</td><td class="celda_calendario" onclick="pasar_fecha(12);">12</td><td class="celda_calendario" style="color:#FFFFFF;" onclick="pasar_fecha(13);">13</td></tr><tr><td class="celda_calendario" onclick="pasar_fecha(14);">14</td><td class="celda_calendario" onclick="pasar_fecha(15);">15</td><td class="celda_calendario" onclick="pasar_fecha(16);">16</td><td class="celda_calendario" onclick="pasar_fecha(17);">17</td><td class="celda_calendario" onclick="pasar_fecha(18);">18</td><td class="celda_calendario" onclick="pasar_fecha(19);">19</td><td class="celda_calendario" style="color:#FFFFFF;" onclick="pasar_fecha(20);">20</td></tr><tr><td class="celda_calendario" onclick="pasar_fecha(21);">21</td><td class="celda_calendario" style="background-color:#ffff00;" onclick="pasar_fecha(22);">22</td><td class="celda_calendario" onclick="pasar_fecha(23);">23</td><td class="celda_calendario" onclick="pasar_fecha(24);">24</td><td class="celda_calendario" onclick="pasar_fecha(25);">25</td><td class="celda_calendario" onclick="pasar_fecha(26);">26</td><td class="celda_calendario" style="color:#FFFFFF;" onclick="pasar_fecha(27);">27</td></tr><tr><td class="celda_calendario" onclick="pasar_fecha(28);">28</td><td class="celda_calendario" onclick="pasar_fecha(29);">29</td><td class="celda_calendario" onclick="pasar_fecha(30);">30</td></tr></tbody></table></div>
+			<span id="digitalclock" class="styling"></span>
+
+<script>
+
+			</td></tr></table>
+
+	
+
+
+</body>
+
+</html></script></td></tr></tbody></table></td></tr></tbody></table></body></html>

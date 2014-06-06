@@ -1,0 +1,17 @@
+TRANSACTIONS AND CONCURRENCY CONTROL
+	- Transactions
+	- Locks
+			853 pag.
+
+INTERPROCESS COMMUNICATION
+	- The API for the Internet Protocols
+
+REMOTE INVOCATION
+	- Remote Method Invocation (RMI)
+
+
+
+REFERENCIA SOBRE LOS PLANIFICADORES
+Abraham Silberschatz, Greg Gagne, y Peter Baer Galvin, "Conceptos del sistema operativo, octava edición", en el capítulo 5
+http://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/5_CPU_Scheduling.html
+
